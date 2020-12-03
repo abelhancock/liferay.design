@@ -19,10 +19,11 @@ function upsertAtPath(path, value, obj) {
 	return obj
 }
 
+
 export default class Team extends Component {
 	render() {
 		const post = this.props.data.mdx
-		const teammate = post.frontmatter.author
+		const teammate = post.frontmatter
 		const links = teammate.links ? teammate.links : null // this is to catch people who dont have links
 		const socials = links
 			? [
@@ -251,26 +252,24 @@ export const pageQuery = graphql`
 	query($slug: String!) {
 		mdx(fields: { slug: { eq: $slug } }) {
 			frontmatter {
-				author {
-					id
-					startDate
-					title
-					icon
-					links {
-						dribbble
-						figma
-						github
-						instagram
-						medium
-						twitter
-						unsplash
-						webflow
-						website
-					}
-				}
+			  id
+			  startDate
+			  title
+			  icon
+			  links {
+				dribbble
+				figma
+				github
+				instagram
+				medium
+				twitter
+				unsplash
+				webflow
+				website
+			  }
 			}
 			body
 			excerpt
-		}
+		  }
 	}
 `

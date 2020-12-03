@@ -1,5 +1,20 @@
 ---
-author: 'Abel Hancock'
+id: Abel Hancock
+title: Product Designer
+active: true
+icon: fa_code
+startDate: 2017-09-18
+location: Diamond Bar
+links:
+  dribbble: abelhancock
+  unsplash: ""
+  webflow: abelhancock
+  github: abelhancock
+  instagram: abelhancock
+  twitter: abelfhancock
+  medium: ""
+  figma: abelhancock
+  website: https://abelhancock.com
 ---
 
 ### Favorite tool? 🛠

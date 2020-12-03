@@ -1,7 +1,20 @@
 ---
-author: 'Paul Hanaoka'
+id: Paul Hanaoka
+title: Manager, Product Design NA
+active: true
+icon: fa_terminal
+startDate: 2014-08-25
+location: Diamond Bar
+links:
+  website: https://paul.hanaoka.co
+  dribbble: plhnk
+  figma: paul
+  github: plhnk
+  twitter: plhnk
+  unsplash: plhnk
+  medium: plhnk
+office: Diamond Bar
 ---
-
 ### Favorite tool?
 
 Figma &mdash; and my 8' level.

@@ -14,58 +14,55 @@ publish_mode: editorial_workflow
 
 # Collections
 collections:
-    - name: System
-      label: People / Places
-      files:
-          - label: Authors
-            name: Authors
-            create: true
-            extension: yaml
-            file: src/markdown/Authors.yaml
-            fields:
-                - label: Authors
-                  name: authors
-                  widget: list
-                  fields:
-                      - { label: Name, name: id, widget: string }
-                      - { label: Title, name: title, widget: string }
-                      - { label: Active, name: active, widget: boolean }
-                      - { label: Icon, name: icon, widget: string }
-                      - { label: Start Date, name: date, widget: datetime }
-                      - {
-                            label: Office,
-                            name: office,
-                            widget: relation,
-                            collection: Offices,
-                            search_fields: [id],
-                            value_field: id,
-                        }
-          - label: Offices
-            name: Offices
-            file: src/markdown/Offices.yaml
-            create: true
-            extension: yaml
-            fields:
-                - label: Offices
-                  name: id
-                  widget: list
-                  fields:
-                      - { label: Name, name: id, widget: string }
-                      - { label: Flag Icon, name: regionIcon, widget: string }
-                      - { label: City, name: city, widget: string }
-                      - { label: Region, name: region, widget: string }
-                      - { label: Country, name: country, widget: string }
-                      - { label: Google Map URL, name: mapURL, widget: string }
-    - name: articles
-      label: Articles
-      folder: src/markdown/articles/
-      media_folder: static/images/articles/
-      path: '{{year}}/{{slug}}'
-      create: true
-      fields:
-          - { label: Author, name: author, widget: string }
-          - { label: Publish Date, name: date, widget: datetime }
-          - { label: Title, name: title, widget: string }
-          - { label: Featured Image, name: featuredImage, widget: image }
-          - { label: Publish, name: publish, widget: boolean }
-          - { label: Body, name: body, widget: markdown }
+  - label: People
+    name: People
+    create: true
+    folder: src/markdown/team/
+    identifier_field: id
+    fields:
+        - { label: Name, name: id, widget: string }
+        - { label: Title, name: title, widget: string }
+        - { label: Active, name: active, widget: boolean }
+        - { label: Icon, name: icon, widget: string }
+        - { label: Start Date, name: startDate, widget: datetime }
+        - { label: Location, name: location, widget: relation, collection: Locations, search_fields: [Name], value_field: id, required: false}
+        - label: Links
+          name: links
+          widget: object
+          collapsed: true
+          fields:
+            - { lable: Dribbble User Name, hint: e.g. liferay.design, name: dribbble, widget: string, required: false }
+            - { lable: Unsplash User Name, hint: e.g. liferay.design, name: unsplash, widget: string, required: false }
+            - { lable: Webflow User Name, hint: e.g. liferay.design, name: webflow, widget: string, required: false }
+            - { lable: Github User Name, hint: e.g. liferay.design, name: github, widget: string, required: false }
+            - { lable: Instagram User Name, hint: e.g. liferay.design, name: instagram, widget: string, required: false }
+            - { lable: Twitter User Name, hint: e.g. liferay.design, name: twitter, widget: string, required: false }
+            - { lable: Medium User Name, hint: e.g. liferay.design, name: medium, widget: string, required: false }
+            - { lable: Figma Community User Name, hint: e.g. liferay.design, name: figma, widget: string, required: false }
+            - { lable: Personal Website, hint: e.g. www.liferay.design, name: website, widget: string, required: false }
+        - { label: Bio, name: body, widget: markdown, required: false}
+  - label: Articles
+    name: articles
+    folder: src/markdown/articles/
+    media_folder: static/images/articles/
+    path: '{{year}}/{{slug}}'
+    create: true
+    fields:
+        - { label: Author, name: author, widget: relation, collection: People,  search_fields: [Name], value_field: id }
+        - { label: Publish Date, name: date, widget: datetime }
+        - { label: Title, name: title, widget: string }
+        - { label: Featured Image, name: featuredImage, widget: image }
+        - { label: Publish, name: publish, widget: boolean }
+        - { label: Body, name: body, widget: markdown }
+  - label: Locations
+    name: Locations
+    folder: src/markdown/locations
+    identifier_field: id
+    create: true
+    fields:
+        - { label: Name, name: id, widget: string }
+        - { label: Flag Icon, name: regionIcon, widget: string }
+        - { label: City, name: city, widget: string }
+        - { label: Region, name: region, widget: string }
+        - { label: Country, name: country, widget: string }
+        - { label: Google Map URL, name: mapURL, widget: string }

@@ -23,11 +23,11 @@ export default ({ data }) => {
 						<CardDefault
 							delay={`${index}` * 0.1 + 's'}
 							key={node.id}
-							imageURL={headshotPath(node.frontmatter.author.id)}
-							link={'/team/' + makeAuthorSlug(node.frontmatter.author.id)}
-							title={node.frontmatter.author.id}
-							subtitle={node.frontmatter.author.title}
-							icon={node.frontmatter.author.icon}
+							imageURL={headshotPath(node.frontmatter.id)}
+							link={'/team/' + makeAuthorSlug(node.frontmatter.id)}
+							title={node.frontmatter.id}
+							subtitle={node.frontmatter.title}
+							icon={node.frontmatter.icon}
 						/>
 					))}
 				</Grid>
@@ -41,7 +41,7 @@ export const query = graphql`
 		allMdx(
 			filter: {
 				fileAbsolutePath: { regex: "/(/team/)/" }
-				frontmatter: { author: { active: { eq: true } } }
+				frontmatter: { active: { eq: true } }
 			}
 			sort: { order: ASC, fields: [fields___slug] }
 		) {
@@ -50,11 +50,9 @@ export const query = graphql`
 				node {
 					id
 					frontmatter {
-						author {
-							id
-							title
-							icon
-						}
+						id
+						title
+						icon
 					}
 					fields {
 						slug
